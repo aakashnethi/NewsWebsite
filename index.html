@@ -1,0 +1,472 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>BBC News</title>
+    
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <style>
+        
+        body {
+            margin: 0;
+            font-family: arial,helvetica,sans-serif;
+            background-image:url("images/red-masthead.png");
+            background-repeat:no-repeat;
+            background-position: top;
+            width: 100%;
+        }
+
+        #topbar {
+            background-color:rgba(60,60,60,0.3);
+            height: 40px;
+            width: 100%;
+            color: white;
+        }
+        
+        .fixedwidth {
+            width: 1000px;
+            margin: 0 auto;
+        }
+        
+        #logodiv {
+            padding-top: 5px;
+            float: left;
+            border-right: 1px solid #990000;
+            padding-right: 10px;
+            padding-bottom: 5px; /* to extend border to bottom of top bar */
+        }
+        
+        #signindiv {
+            font-size: 0.9em;
+            padding: 6px 80px 8px 20px; /* to extend border to bottom of top bar */
+            float: left;
+        }
+        
+        #signindiv img {
+            position: relative;
+            top: 3px;
+        }
+        
+        #signindiv:hover {
+            border-bottom:5px solid white;
+        }
+        
+        .verticallinediv {  /* separator for top menu/top bar items */
+            float: left;
+            background-color: #990000;
+            width: 1px;
+            height: 40px; /* maybe */
+        }
+        
+        #topmenudivnews {
+            float: left;
+            font-size: 0.9em;
+            padding: 10px 20px 9px 20px;
+        }
+        #topmenudivsport {
+            float: left;
+            font-size: 0.9em;
+            padding: 10px 20px 9px 20px;
+        }
+        #topmenudivweather {
+            float: left;
+            font-size: 0.9em;
+            padding: 10px 20px 9px 20px;
+        }
+        #topmenudivearth {
+            float: left;
+            font-size: 0.9em;
+            padding: 10px 20px 9px 20px;
+        }
+        #topmenudivtv {
+            float: left;
+            font-size: 0.9em;
+            padding: 10px 20px 9px 20px;
+        }
+        #topmenudivradio {
+            float: left;
+            font-size: 0.9em;
+            padding: 10px 20px 9px 20px;
+        }
+        #topmenudivmore {
+            float: left;
+            font-size: 0.9em;
+            padding: 10px 20px 9px 20px;
+        }
+        
+        #topmenudivnews:hover {
+            border-bottom:5px solid #990000;
+        }
+        #topmenudivsport:hover {
+            border-bottom:5px solid #ffe711;
+        }
+        #topmenudivweather:hover {
+            border-bottom:5px solid #77cdff;
+        }
+        #topmenudivearth:hover {
+            border-bottom:5px solid #ed3482;
+        }
+        #topmenudivtv:hover {
+            border-bottom:5px solid #ff6600;
+        }
+        #topmenudivradio:hover {
+            border-bottom:5px solid #00e800;
+        }
+        #topmenudivmore:hover {
+            border-bottom:5px solid white;
+        }
+        
+
+        #searchdiv {
+            float: left;
+            padding: 5px 0 0 10px;
+                height: 35px;
+            border-left: 1px solid #990000;
+        }
+        
+        #searchdiv input {
+            height: 25px;
+            border: none;
+            font-size: 0.8em;
+            background-image: url("images/magnify.png");
+            background-repeat: no-repeat;
+            background-position: right center;
+        }
+        
+        .break {
+            clear: both;
+        }
+        
+        #newsbar {
+            height: 88px;
+            width: 100%;
+            color: white;
+        }
+        
+        #newsbar p {
+            margin: 0;
+            padding: 0;
+            padding-top: 7px;
+            float: left;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        #newsheader {
+            font-size: 2.7em;
+        }
+        
+        #uk {
+            font-size: 0.7em;
+            padding-left: 20px;
+        }
+        
+        #rss {
+            float: right;
+            margin-top: 33px;
+        }
+        
+        #topicmenu {
+            padding-top: 7px;
+        }
+        
+        #topicmenu ul {
+            background-color: #3E0C0D;
+            padding: 5px 0 0 5px;
+            margin: 0;
+            height: 20px;
+        }
+        
+        #topicmenu li {
+            list-style: none;
+            font-size: 0.8em;
+            border-right: 1px solid #770000;
+            padding: 0 6px 0 6px;
+            float: left;
+        }
+        
+        #topicmenu li a {
+            color: white;
+        }
+        
+        .selected {
+            background-color: #EDEDED;
+            color: #666666;
+            height: 20px;
+            position: relative;
+            top: -5px;
+            padding-top: 5px !important; /* padding in li overrides if !important omitted */
+        }
+        
+        #content {
+            width: 100%;
+            color: #535353;
+            font-size: 0.75em;
+        }
+        
+        .date {
+            font-weight: bold;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin: 0 0 5px 0;
+        }
+        
+        h1 a {
+            color: #21588c;
+        }
+        
+        .headlineimage {
+            float: left;
+        }
+        
+        .newsitem {
+            position: relative;
+            left: 10px;
+            top: -15px;
+            width: 300px;
+            float: left;
+            font-size: 1.1em;
+        }
+        
+        .newsitem a {
+            color: #21588c;
+        }
+        
+        a {
+            text-decoration: none; /* suppress link underlining */
+        }
+ 
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .video {
+            background-image: url("images/triangle.png");
+            background-repeat: no-repeat;
+            background-position: left center;
+            padding-left: 20px;
+        }
+        
+        .links {
+            line-height: 1.6em;
+        }
+        
+        #watchlisten {
+            background-color: #eeeeee;
+            float: right;
+            width: 337px;
+            position: relative;
+            top: -60px;
+        }
+        
+        h2 {
+            color: #505050;
+            font-size: 2em;
+            margin: 10px 0 10px 10px;
+        }
+        
+        #boxes {
+            float: right;
+            margin: 22px 10px 0 0;
+        }
+        
+        #leftarrow {
+            float:left;
+            border-right: 1px solid white;
+        }
+        
+        .wlblock {
+            float: left;
+            background-color: #d1700e;
+            width: 143px;
+            height: 124px;
+            border-right: 1px solid white;
+        }
+        
+        .wlblock a {
+            color: #e0e0e0;
+            font-size: 1.1em;
+        }
+        
+        .wlblock p {
+            margin: 5px 10px 0 10px;
+        }
+        
+        #watchlisten ul {
+            margin: 0;
+            padding: 0 10px 5px 10px;
+        }
+        
+        #watchlisten li {
+            list-style: none;
+            background-image: url("images/live.png");
+            background-repeat: no-repeat;
+            background-position: left center;
+            padding: 5px 0 5px 40px;
+            font-size: 1.2em;
+        }
+        
+        .borderbottom {
+            border-bottom: 1px solid #dddddd;
+        }
+        
+    </style>
+    
+</head>
+
+<body>
+
+    <div id="container">
+  
+        <div id="topbar" >
+            
+            <div class="fixedwidth">
+                
+                <div id="logodiv">
+                    <img src="images/bbc_logo.png" />
+                </div>
+                
+                <div id="signindiv">
+                    <img src="images/signin.png" /> Sign In 
+                </div>
+                
+                <div id="topmenudiv">
+                
+                    <div class="verticallinediv"></div>
+                    <div id="topmenudivnews">News</div>
+                    <div class="verticallinediv"></div>
+                    <div id="topmenudivsport">Sport</div>
+                    <div class="verticallinediv"></div>
+                    <div id="topmenudivweather">Weather</div>
+                    <div class="verticallinediv"></div>
+                    <div id="topmenudivearth">Earth</div>
+                    <div class="verticallinediv"></div>
+                    <div id="topmenudivtv">TV</div>
+                    <div class="verticallinediv"></div>
+                    <div id="topmenudivradio">Radio</div>
+                    <div class="verticallinediv"></div>
+                    <div id="topmenudivmore">More...</div>
+                    
+                </div>
+                
+                <div id="searchdiv">
+                    <input src="text" placeholder=" Search"/>
+                </div>
+                
+            </div>
+    
+        </div>
+        
+        <div class="break"></div>
+        
+        <div id="newsbar" >
+            
+            <div class="fixedwidth" >
+                
+                <p id="newsheader">NEWS<span id="uk">UK</span></p>
+                
+                <div id="rss">
+                    RSS <img src="images/rss.png" />
+                </div>
+                
+                <div class="break"></div>
+        
+                <div id="topicmenu">
+                    
+                    <ul>
+                        
+                        <li><a href="">Home</a></li>
+                        <li><a href="">US & Canada</a></li>
+                        <li><a href="">Latin America</a></li>
+                        <li class="selected">UK</li>
+                        <li><a href="">Africa</a></li>
+                        <li><a href="">Asia</a></li>
+                        <li><a href="">Australia</a></li>
+                        <li><a href="">Europe</a></li>
+                        <li><a href="">Mid-East</a></li>
+                        <li><a href="">Business</a></li>
+                        <li><a href="">Health</a></li>
+                        <li><a href="">Sci/Environment</a></li>
+                        <li><a href="">Tech</a></li>
+                        <li style="border-right: none"><a href="">Entertainment & Arts</a></li>
+
+                        
+                    </ul>
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <div class="break"></div>
+        
+        <div id="content" >
+            
+            <div class="fixedwidth" >
+                
+                <p><span class="date">18 Apr 2015</span> Last updated at 21:12</p>
+                
+                <h1><a href="">Fears UK medics crossed into Syria</a></h1>
+                
+                <img class="headlineimage" src="images/headlineimage.jpg" />
+                
+                <div class="newsitem">
+                    
+                    <p>Nine British medical students and doctors are feared to have travelled to Syria to work in areas controlled by Islamic State militants.</p>
+                
+                    <p class="links">
+                        <a class="video" href="">Families of medics 'gravely concerned'</a><br />
+                    
+                        <a href="">'More can be done' to stop Syria travel</a><br />
+                    
+                        <a href="">Battle for Iraq and Syria in maps</a>
+                    </p>
+                    
+                </div>
+                
+                <div id="watchlisten">
+                    
+                    <img src="images/boxes.png" id="boxes" />
+                    
+                    <h2>Watch/Listen</h2>
+                    
+                    <img src="images/leftarrow.png" id="leftarrow" />
+                    
+                    <div class="wlblock">
+                        
+                        <img src="images/pic1.png" />
+                        <p><a href="">Historical journey for King's remains</a></p>
+                    
+                    </div>
+                    
+                    <div class="wlblock">
+                        
+                        <img src="images/pic2.png" />
+                        <p><a href="">Tory denies 'fake EDL march' claim</a></p>
+                        
+                    </div>
+                    
+                    <img src="images/rightarrow.png" id="rightarrow" />
+                    
+                    <ul>
+                        <li class="borderbottom"><a href="">BBC News Channel</a></li>
+                        <li><a href="">Radio 5 Live</a></li>
+                    </ul>
+                    
+                </div>
+                
+                
+            </div>
+            
+        </div>
+    
+    </div> 
+
+</body>
+</html>

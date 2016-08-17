@@ -1,0 +1,85 @@
+<html>
+<head>
+<style>
+#theBlock{
+	background-color: #eeeeee;
+	width: 336px;
+}
+
+.watch{
+	float: left;
+	font-size: 30px;
+	padding: 10px;
+}
+.theImage{
+	float: right;
+	padding: 20px 10px 10px 10px;
+}
+.clear{
+	clear: both;
+}
+#leftArrow {
+	float: left;
+	padding-right: 1px;
+}
+#rightArrow {
+	float: right;
+}
+
+.theImageBlock{
+	float: left;
+	top:0px;
+	margin-right: 1px;
+	background-color: orange;
+}
+.someTihng{
+	clear: both;
+	width: 100px;
+	font-size: 13px;
+	padding: 7px;
+}
+.someTihng a{
+	color: white;
+	text-decoration: none;
+} 
+.someTihng a:hover{
+	color: white;
+	text-decoration: underline;
+} 
+</style>
+
+
+</head>
+
+<body>
+	<div id="theBlock">
+		<div id="header">
+			<div class="watch">Watch/Listen</div> 
+			<div class="theImage"><img src="images/boxes.png"></div> 
+		</div>
+		<div class="clear"></div>
+		<div id="secondBlock">
+			<div id="leftArrow"><img src="images/leftarrow.png"></div>
+			<div class="theImageBlock">
+				<img src="images/pic1.png">
+				<div  class="someTihng"><a href="">Historical journey for King's remains</a></div>
+			</div>
+			<div class="theImageBlock">
+				<img src="images/pic2.png">
+				<div  class="someTihng"><a href="">Historical journey for King's remains</a></div>
+			</div>
+			<div id="rightArrow"><img src="images/rightarrow.png"></div>			
+		</div>
+		<div id="thirdBlock">
+		</div>
+	</div>
+</body>
+
+<script type="text/javascript">
+	
+	var theBlock = document.getElementById("theBlock");theBlock.style.backgroundColor = "red";var theleftArrowInTheImageBlock = document.getElementById("leftArrow");
+
+
+</script>
+
+</html>
